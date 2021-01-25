@@ -1,40 +1,38 @@
-import React ,{ Component } from "react";
-// import YoutubeComp from "../../Component/YoutubeComp/YoutubeComp";
-import Product from ".././Product/Product";
+//import libraries
+import React ,{ Component, Fragment } from "react";
+import {BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+//import style
+import "./Home.css";
+
+//import pages
+import BlogPost from "../pages/BlogPost/BlogPost";
+import YoutubeCompPage from "../pages/YoutubeCompPage/YoutubeCompPage";
+import Product from "../pages/Product/Product";
+import LifeCycleComp from "../pages/LifeCycleComp/LifeCycleComp";
+import DetailPost from "../pages/BlogPost/DetailPost/DetailPost";
+import GlobalProvider from "../../context/context";
 
 class Home extends Component {
-  render() {
-    return (
-      <div>
-        {/* <p>Youtube Component</p>
-        <hr/>
-        <YoutubeComp 
-        src="https://i.ytimg.com/vi/i0j_sz-8Cj0/maxresdefault.jpg" 
-        time="17.20" 
-        title="Rekomendasi Hp Terbaik Di Tahun 2020" 
-        desc="2M views . 2 hours ago"/>
-        <YoutubeComp 
-        src="https://img.youtube.com/vi/CT9snaIDWvg/maxresdefault.jpg" 
-        time="18.20" title="Iphone 12 Pro Max Rp2 juta vs Rp 25juta..." 
-        desc="30M views . 10 hours ago"/>
-        <YoutubeComp 
-        src="https://img.youtube.com/vi/b2mdzXj5ueI/maxresdefault.jpg" 
-        time="15.10" 
-        title="CUTE BANGET !!! UNBOXING IPHONE 12 mini" 
-        desc="1M views . 4 days ago"/>
-        <YoutubeComp 
-        src="https://img.youtube.com/vi/yFCZQe4coe0/maxresdefault.jpg" 
-        time="10.50" 
-        title="UNBOXING & BUKTIIN KECANGGIHAN SENSOR LIDAR" 
-        desc="40M views . 7 days ago"/>
-        <YoutubeComp src="https://i.ytimg.com/vi/i0j_sz-8Cj0/maxresdefault.jpg" /> */}
-        <p>Counter</p>
-        <hr/>
-        <Product />
-
-      </div>
-    )
-  }
+      render() {
+            return (      
+                  <Router>
+                              <Fragment>
+                                    <div className="navigation">
+                                          <Link to="/"> Blog Post</Link>
+                                          <Link to="/product"> Product</Link>
+                                          <Link to="/lifecycle"> LifeCycleComp</Link>
+                                          <Link to="/youtube-comp"> YoutubeComp</Link>
+                                    </div>
+                                    <Route path="/" exact component={BlogPost}></Route>
+                                    <Route path="/detail-post/:id" component={DetailPost}></Route>
+                                    <Route path="/product" component={Product}></Route>
+                                    <Route path="/lifecycle" component={LifeCycleComp}></Route>
+                                    <Route path="/youtube-comp" component={YoutubeCompPage}></Route>
+                              </Fragment>
+                  </Router>
+            )
+      }
 }
 
-export default Home;
+export default GlobalProvider(Home);

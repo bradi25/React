@@ -23,7 +23,7 @@
 }
 
 .troley img {
-  width: 30px;
+  width: 100px;
 }
 
 .count {
@@ -57,7 +57,7 @@
 
 .counter {
   width: 300px;
-  justify-content: center;
+  justify-content: right;
   margin: auto;
 }
 
